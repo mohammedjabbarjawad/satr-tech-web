@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>إدارتك | منصة الإدارة المدرسية الذكية - satr-tech.com</title>
     <script>
-        // إذا وصل المستخدم من إيميل استعادة كلمة المرور على الرابط الرئيسي مع التوكن، نوجّهه فوراً لصفحة استعادة الرمز مع الاحتفاظ بالتوكن
-        if (window.location.hash && (window.location.hash.includes("access_token=") || window.location.hash.includes("type=recovery") || window.location.hash.includes("error="))) {
+        // إذا وصل المستخدم من إيميل استعادة كلمة المرور فقط (type=recovery)، نوجّهه فوراً لصفحة استعادة الرمز مع الاحتفاظ بالتوكن
+        if (window.location.hash && window.location.hash.includes("type=recovery")) {
             window.location.replace("/reset-password.html" + window.location.hash);
         }
     </script>
@@ -60,6 +60,18 @@
             line-height: 1.8;
             margin-bottom: 28px;
         }
+        .confirm-banner {
+            display: none;
+            background: rgba(16, 185, 129, 0.18);
+            border: 1.5px solid rgba(52, 211, 153, 0.6);
+            color: #ECFDF5;
+            padding: 18px 20px;
+            border-radius: 18px;
+            margin-bottom: 24px;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.8;
+        }
         .footer {
             font-size: 13px;
             color: #64748B;
@@ -70,9 +82,21 @@
 <body>
     <div class="container">
         <div class="badge">SATR-TECH.COM</div>
-        <h1>منصة إدارتك</h1>
-        <p>النظام المتكامل لإدارة المدارس الحكومية والأهلية، الحضور الذكي، الدرجات، المخازن، والحسابات المدرسية.</p>
+        <h1 id="mainTitle">منصة إدارتك</h1>
+        <div id="confirmBanner" class="confirm-banner">
+            ✅ تم تأكيد بريدك الإلكتروني وتفعيل حسابك بنجاح!<br/>
+            يمكنك الآن إغلاق هذه الصفحة والعودة إلى تطبيق <strong>إدارتك</strong> لتسجيل الدخول.
+        </div>
+        <p id="mainDesc">النظام المتكامل لإدارة المدارس الحكومية والأهلية، الحضور الذكي، الدرجات، المخازن، والحسابات المدرسية.</p>
         <div class="footer">© جميع الحقوق محفوظة — satr-tech.com</div>
     </div>
+    <script>
+        const hash = window.location.hash || "";
+        const search = window.location.search || "";
+        if (hash.includes("type=signup") || hash.includes("type=email") || hash.includes("access_token=") || search.includes("type=signup") || search.includes("code=")) {
+            document.getElementById("confirmBanner").style.display = "block";
+            document.getElementById("mainTitle").textContent = "تم تأكيد الحساب ✅";
+        }
+    </script>
 </body>
 </html>
