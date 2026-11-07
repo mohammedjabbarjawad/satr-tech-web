@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>إدارتك | منصة الإدارة المدرسية الذكية - satr-tech.com</title>
+    <script>
+        // إذا وصل المستخدم من إيميل استعادة كلمة المرور على الرابط الرئيسي مع التوكن، نوجّهه فوراً لصفحة استعادة الرمز مع الاحتفاظ بالتوكن
+        if (window.location.hash && (window.location.hash.includes("access_token=") || window.location.hash.includes("type=recovery") || window.location.hash.includes("error="))) {
+            window.location.replace("/reset-password.html" + window.location.hash);
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+        }
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1E3A8A 0%, #0F2856 50%, #0B132B 100%);
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            text-align: center;
+        }
+        .container {
+            max-width: 560px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            backdrop-filter: blur(12px);
+            border-radius: 28px;
+            padding: 48px 32px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+        }
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 999px;
+            background: rgba(56, 189, 248, 0.15);
+            color: #7DD3FC;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+        h1 {
+            font-size: 38px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+        p {
+            font-size: 16px;
+            color: #CBD5E1;
+            line-height: 1.8;
+            margin-bottom: 28px;
+        }
+        .footer {
+            font-size: 13px;
+            color: #64748B;
+            margin-top: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="badge">SATR-TECH.COM</div>
+        <h1>منصة إدارتك</h1>
+        <p>النظام المتكامل لإدارة المدارس الحكومية والأهلية، الحضور الذكي، الدرجات، المخازن، والحسابات المدرسية.</p>
+        <div class="footer">© جميع الحقوق محفوظة — satr-tech.com</div>
+    </div>
+</body>
+</html>
